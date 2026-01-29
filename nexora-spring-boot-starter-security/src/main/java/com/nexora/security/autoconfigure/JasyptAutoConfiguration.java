@@ -27,7 +27,7 @@ import org.springframework.context.annotation.Configuration;
 @Configuration
 @ConditionalOnClass(StandardPBEStringEncryptor.class)
 @EnableConfigurationProperties(SecurityProperties.class)
-@ConditionalOnProperty(prefix = "common.security.jasypt", name = "enabled", havingValue = "true")
+@ConditionalOnProperty(prefix = "nexora.security.jasypt", name = "enabled", havingValue = "true")
 public class JasyptAutoConfiguration {
 
     private final SecurityProperties.Jasypt jasypt;

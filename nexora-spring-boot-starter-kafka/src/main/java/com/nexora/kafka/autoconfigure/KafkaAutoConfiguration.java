@@ -18,7 +18,7 @@ import org.springframework.kafka.annotation.EnableKafka;
  *
  * <p>Configuration properties (application.yml):
  * <pre>
- * common:
+ * nexora:
  *   kafka:
  *     dlq:
  *       enabled: true
@@ -40,7 +40,7 @@ public class KafkaAutoConfiguration {
      * Only active when JPA is available and outbox is enabled.
      */
     @ConditionalOnClass(name = "org.springframework.boot.autoconfigure.domain.EntityScan")
-    @ConditionalOnProperty(prefix = "common.kafka.outbox", name = "enabled", havingValue = "true", matchIfMissing = false)
+    @ConditionalOnProperty(prefix = "nexora.kafka.outbox", name = "enabled", havingValue = "true", matchIfMissing = false)
     public static class OutboxConfiguration {
         // Outbox entity scanning will be handled by Spring Boot auto-configuration
         // when spring-boot-starter-data-jpa is on the classpath

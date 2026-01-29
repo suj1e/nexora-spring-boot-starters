@@ -7,7 +7,7 @@ import org.springframework.boot.context.properties.ConfigurationProperties;
  *
  * @author sujie
  */
-@ConfigurationProperties(prefix = "common.kafka")
+@ConfigurationProperties(prefix = "nexora.kafka")
 public class KafkaProperties {
 
     /**

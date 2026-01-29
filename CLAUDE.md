@@ -29,10 +29,10 @@ Each starter uses Spring Boot's `@AutoConfiguration` mechanism:
 | Starter | Auto-Configuration | Key Components | Properties Prefix |
 |---------|-------------------|----------------|-------------------|
 | **nexora-spring-boot-starter-web** | `CommonWebAutoConfiguration` | `ResponseWrapperAspect`, `GlobalExceptionHandler`, `Result<T>`, `BusinessException` | None (uses defaults) |
-| **nexora-spring-boot-starter-redis** | `RedisCacheAutoConfiguration`, `CaffeineAutoConfiguration` | `RedisCacheManager`, `CaffeineCacheManager`, `CacheHelper` | `common.redis` |
-| **nexora-spring-boot-starter-kafka** | `KafkaAutoConfiguration`, `KafkaDlqAutoConfiguration` | `EventPublisher`, `OutboxEvent`, DLQ handler | `common.kafka` |
-| **nexora-spring-boot-starter-resilience** | `ResilienceAutoConfiguration`, `EventListenerAutoConfiguration` | `CircuitBreakerRegistry`, `RetryRegistry`, `TimeLimiterRegistry`, Event loggers | `common.resilience` |
-| **nexora-spring-boot-starter-security** | `SecurityAutoConfiguration`, `JasyptAutoConfiguration` | `JwtTokenProvider`, `Encryptor` | `common.security` |
+| **nexora-spring-boot-starter-redis** | `RedisCacheAutoConfiguration`, `CaffeineAutoConfiguration` | `RedisCacheManager`, `CaffeineCacheManager`, `CacheHelper` | `nexora.redis` |
+| **nexora-spring-boot-starter-kafka** | `KafkaAutoConfiguration`, `KafkaDlqAutoConfiguration` | `EventPublisher`, `OutboxEvent`, DLQ handler | `nexora.kafka` |
+| **nexora-spring-boot-starter-resilience** | `ResilienceAutoConfiguration`, `EventListenerAutoConfiguration` | `CircuitBreakerRegistry`, `RetryRegistry`, `TimeLimiterRegistry`, Event loggers | `nexora.resilience` |
+| **nexora-spring-boot-starter-security** | `SecurityAutoConfiguration`, `JasyptAutoConfiguration` | `JwtTokenProvider`, `Encryptor` | `nexora.security` |
 
 ## Development Commands
 
@@ -62,10 +62,10 @@ Each starter uses Spring Boot's `@AutoConfiguration` mechanism:
 
 ## Configuration Properties
 
-All properties use the `common.*` prefix pattern:
+All properties use the `nexora.*` prefix pattern:
 
 ```yaml
-common:
+nexora:
   redis:
     enabled: true
     cache-default-ttl: 30m
@@ -150,8 +150,8 @@ Exception mappings:
 - **Key prefix** support for multi-environment isolation
 
 Auto-configurations:
-- `RedisCacheAutoConfiguration` - activates when `RedisConnectionFactory` present, `common.redis.enabled=true`
-- `CaffeineAutoConfiguration` - activates when `Caffeine` present, `common.redis.enable-caffeine=true`
+- `RedisCacheAutoConfiguration` - activates when `RedisConnectionFactory` present, `nexora.redis.enabled=true`
+- `CaffeineAutoConfiguration` - activates when `Caffeine` present, `nexora.redis.enable-caffeine=true`
 
 ### Kafka Starter
 
@@ -161,7 +161,7 @@ Auto-configurations:
 
 Auto-configurations:
 - `KafkaAutoConfiguration` - `@EnableKafka`, component scan for `EventPublisher`
-- `KafkaDlqAutoConfiguration` - DLQ error handler when `common.kafka.dlq.enabled=true`
+- `KafkaDlqAutoConfiguration` - DLQ error handler when `nexora.kafka.dlq.enabled=true`
 
 Non-retryable exceptions: `IllegalArgumentException`, `DeserializationException`
 
@@ -187,7 +187,7 @@ Event listeners: `CircuitBreakerEventLogger`, `RetryEventLogger`
 
 Auto-configurations:
 - `SecurityAutoConfiguration` - nested `JwtTokenProviderConfiguration`, `EncryptorConfiguration`
-- `JasyptAutoConfiguration` - `StandardPBEStringEncryptor` when `common.security.jasypt.enabled=true`
+- `JasyptAutoConfiguration` - `StandardPBEStringEncryptor` when `nexora.security.jasypt.enabled=true`
 
 ## Component Scanning
 

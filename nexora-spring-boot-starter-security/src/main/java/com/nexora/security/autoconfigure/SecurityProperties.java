@@ -10,16 +10,16 @@ import java.time.Duration;
  *
  * <p>Configuration example:
  * <pre>
- * common.security.jasypt.enabled=true
- * common.security.jasypt.password=${JASYPT_PASSWORD}
- * common.security.jwt.secret=${JWT_SECRET}
- * common.security.jwt.expiration=1h
+ * nexora.security.jasypt.enabled=true
+ * nexora.security.jasypt.password=${JASYPT_PASSWORD}
+ * nexora.security.jwt.secret=${JWT_SECRET}
+ * nexora.security.jwt.expiration=1h
  * </pre>
  *
  * @author sujie
  */
 @Data
-@ConfigurationProperties(prefix = "common.security")
+@ConfigurationProperties(prefix = "nexora.security")
 public class SecurityProperties {
 
     /**

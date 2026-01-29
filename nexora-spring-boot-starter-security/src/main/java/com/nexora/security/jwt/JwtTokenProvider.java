@@ -37,7 +37,7 @@ import java.util.Map;
 @Slf4j
 @Component
 @EnableConfigurationProperties(JwtProperties.class)
-@ConditionalOnProperty(prefix = "common.security.jwt", name = "enabled", havingValue = "true")
+@ConditionalOnProperty(prefix = "nexora.security.jwt", name = "enabled", havingValue = "true")
 public class JwtTokenProvider {
 
     private final JwtProperties properties;

@@ -31,7 +31,7 @@ import java.util.concurrent.TimeUnit;
 @ConditionalOnClass(Caffeine.class)
 @EnableCaching
 @EnableConfigurationProperties(RedisProperties.class)
-@ConditionalOnProperty(prefix = "common.redis", name = "enable-caffeine", havingValue = "true", matchIfMissing = true)
+@ConditionalOnProperty(prefix = "nexora.redis", name = "enable-caffeine", havingValue = "true", matchIfMissing = true)
 public class CaffeineAutoConfiguration {
 
     @Bean

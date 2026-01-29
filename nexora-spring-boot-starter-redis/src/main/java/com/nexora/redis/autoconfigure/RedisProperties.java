@@ -12,17 +12,17 @@ import java.util.Map;
  *
  * <p>Configuration example:
  * <pre>
- * common.redis.enabled=true
- * common.redis.cache-default-ttl=30m
- * common.redis.cache-names=user:10m,role:5m,token-blacklist:30m
- * common.redis.use-cache-prefix=true
- * common.redis.key-prefix=myapp:
+ * nexora.redis.enabled=true
+ * nexora.redis.cache-default-ttl=30m
+ * nexora.redis.cache-names=user:10m,role:5m,token-blacklist:30m
+ * nexora.redis.use-cache-prefix=true
+ * nexora.redis.key-prefix=myapp:
  * </pre>
  *
  * @author sujie
  */
 @Data
-@ConfigurationProperties(prefix = "common.redis")
+@ConfigurationProperties(prefix = "nexora.redis")
 public class RedisProperties {
 
     /**

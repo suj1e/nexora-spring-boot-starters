@@ -12,17 +12,17 @@ import java.util.Map;
  *
  * <p>Configuration example:
  * <pre>
- * common.resilience.circuit-breaker.enabled=true
- * common.resilience.circuit-breaker.failure-rate-threshold=50
- * common.resilience.circuit-breaker.wait-duration-in-open-state=10s
- * common.resilience.retry.max-attempts=3
- * common.resilience.retry.wait-duration=1s
+ * nexora.resilience.circuit-breaker.enabled=true
+ * nexora.resilience.circuit-breaker.failure-rate-threshold=50
+ * nexora.resilience.circuit-breaker.wait-duration-in-open-state=10s
+ * nexora.resilience.retry.max-attempts=3
+ * nexora.resilience.retry.wait-duration=1s
  * </pre>
  *
  * @author sujie
  */
 @Data
-@ConfigurationProperties(prefix = "common.resilience")
+@ConfigurationProperties(prefix = "nexora.resilience")
 public class ResilienceProperties {
 
     /**

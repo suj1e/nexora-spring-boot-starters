@@ -36,7 +36,7 @@ import java.util.Map;
 @ConditionalOnClass(name = {"io.github.resilience4j.circuitbreaker.CircuitBreakerRegistry",
         "io.github.resilience4j.retry.RetryRegistry"})
 @EnableConfigurationProperties(ResilienceProperties.class)
-@ConditionalOnProperty(prefix = "common.resilience", name = "enabled", havingValue = "true", matchIfMissing = true)
+@ConditionalOnProperty(prefix = "nexora.resilience", name = "enabled", havingValue = "true", matchIfMissing = true)
 public class ResilienceAutoConfiguration {
 
     private final ResilienceProperties properties;
@@ -105,7 +105,7 @@ public class ResilienceAutoConfiguration {
      * Time Limiter Registry with default configuration.
      */
     @Bean
-    @ConditionalOnProperty(prefix = "common.resilience.time-limiter", name = "enabled", havingValue = "true")
+    @ConditionalOnProperty(prefix = "nexora.resilience.time-limiter", name = "enabled", havingValue = "true")
     public TimeLimiterRegistry timeLimiterRegistry() {
         TimeLimiterConfig config = TimeLimiterConfig.custom()
                 .timeoutDuration(properties.getTimeLimiter().getTimeoutDuration())

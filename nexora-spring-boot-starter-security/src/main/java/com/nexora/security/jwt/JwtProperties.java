@@ -14,7 +14,7 @@ import java.time.Duration;
  * @author sujie
  */
 @Data
-@ConfigurationProperties(prefix = "common.security.jwt")
+@ConfigurationProperties(prefix = "nexora.security.jwt")
 public class JwtProperties {
 
     /**

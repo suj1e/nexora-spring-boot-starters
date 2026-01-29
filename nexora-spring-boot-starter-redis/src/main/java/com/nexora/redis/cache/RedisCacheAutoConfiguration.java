@@ -41,7 +41,7 @@ import java.util.Map;
 @ConditionalOnClass(RedisConnectionFactory.class)
 @EnableCaching
 @EnableConfigurationProperties(RedisProperties.class)
-@ConditionalOnProperty(prefix = "common.redis", name = "enabled", havingValue = "true", matchIfMissing = true)
+@ConditionalOnProperty(prefix = "nexora.redis", name = "enabled", havingValue = "true", matchIfMissing = true)
 public class RedisCacheAutoConfiguration {
 
     @Bean

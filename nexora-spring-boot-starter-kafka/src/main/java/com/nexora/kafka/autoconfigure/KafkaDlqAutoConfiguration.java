@@ -27,7 +27,7 @@ import org.springframework.util.backoff.FixedBackOff;
 @Slf4j
 @Configuration
 @ConditionalOnClass(name = "org.springframework.kafka.core.KafkaTemplate")
-@ConditionalOnProperty(prefix = "common.kafka.dlq", name = "enabled", havingValue = "true", matchIfMissing = true)
+@ConditionalOnProperty(prefix = "nexora.kafka.dlq", name = "enabled", havingValue = "true", matchIfMissing = true)
 public class KafkaDlqAutoConfiguration {
 
     @Autowired(required = false)

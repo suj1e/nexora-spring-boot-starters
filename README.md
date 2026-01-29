@@ -32,7 +32,7 @@ dependencies {
 
 ```yaml
 # Redis 多级缓存 (Caffeine L1 + Redis L2)
-common:
+nexora:
   redis:
     enabled: true
     cache-default-ttl: 30m
@@ -49,7 +49,7 @@ common:
 spring:
   kafka:
     bootstrap-servers: ${KAFKA_SERVERS:localhost:9092}
-common:
+nexora:
   kafka:
     dlq:
       enabled: true
@@ -58,7 +58,7 @@ common:
       enabled: false  # 开启需添加 JPA 依赖
 
 # Resilience4j 熔断降级
-common:
+nexora:
   resilience:
     circuit-breaker:
       enabled: true
@@ -74,7 +74,7 @@ common:
       timeout-duration: 5s
 
 # JWT + 配置加密
-common:
+nexora:
   security:
     jwt:
       enabled: false
