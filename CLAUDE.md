@@ -4,7 +4,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Project Overview
 
-This is a multi-module Gradle project providing Spring Boot starters for microservice infrastructure. Each starter is an auto-configuration library that provides zero-configuration functionality for common concerns (caching, messaging, resilience, security, etc.).
+Multi-module Gradle project providing Spring Boot starters for microservice infrastructure. Each starter is an auto-configuration library with zero-configuration functionality.
 
 **Group ID:** `com.nexora`
 **Version:** `1.0.0`
@@ -13,15 +13,26 @@ This is a multi-module Gradle project providing Spring Boot starters for microse
 
 ## Module Architecture
 
+### Auto-Configuration Pattern
+
+Each starter uses Spring Boot's `@AutoConfiguration` mechanism:
+
+1. Auto-configuration classes in `.../autoconfigure/` packages
+2. Registrations in `src/main/resources/META-INF/spring/org.springframework.boot.autoconfigure.AutoConfiguration.imports`
+3. Conditional activation:
+   - `@ConditionalOnClass` - only activate if dependencies present
+   - `@ConditionalOnMissingBean` - allow user override
+   - `@ConditionalOnProperty` - enable/disable via configuration
+
 ### Starter Responsibilities
 
-| Starter | Key Components |
-|---------|----------------|
-| **nexora-web-starter** | `ResponseWrapperAspect` - wraps controller responses in `Result<T>`, `GlobalExceptionHandler` - unified error handling |
-| **nexora-redis-starter** | Multi-level caching (Caffeine L1 + Redis L2), JSON serialization, per-cache TTL |
-| **nexora-kafka-starter** | `EventPublisher` for messaging, DLQ error handler, `OutboxEvent` entity for transactional outbox pattern |
-| **nexora-resilience-starter** | CircuitBreaker, Retry, TimeLimiter registries using Resilience4j with event logging |
-| **nexora-security-starter** | `JwtTokenProvider` for JWT creation/validation, `Encryptor` using Jasypt for config encryption |
+| Starter | Auto-Configuration | Key Components | Properties Prefix |
+|---------|-------------------|----------------|-------------------|
+| **nexora-web-starter** | `CommonWebAutoConfiguration` | `ResponseWrapperAspect`, `GlobalExceptionHandler`, `Result<T>`, `BusinessException` | None (uses defaults) |
+| **nexora-redis-starter** | `RedisCacheAutoConfiguration`, `CaffeineAutoConfiguration` | `RedisCacheManager`, `CaffeineCacheManager`, `CacheHelper` | `common.redis` |
+| **nexora-kafka-starter** | `KafkaAutoConfiguration`, `KafkaDlqAutoConfiguration` | `EventPublisher`, `OutboxEvent`, DLQ handler | `common.kafka` |
+| **nexora-resilience-starter** | `ResilienceAutoConfiguration`, `EventListenerAutoConfiguration` | `CircuitBreakerRegistry`, `RetryRegistry`, `TimeLimiterRegistry`, Event loggers | `common.resilience` |
+| **nexora-security-starter** | `SecurityAutoConfiguration`, `JasyptAutoConfiguration` | `JwtTokenProvider`, `Encryptor` | `common.security` |
 
 ## Development Commands
 
@@ -49,29 +60,140 @@ This is a multi-module Gradle project providing Spring Boot starters for microse
 ./gradlew publishToMavenLocal
 ```
 
-## Key Architectural Patterns
+## Configuration Properties
 
-### Configuration Properties
-
-Each starter defines its own `@ConfigurationProperties` class (e.g., `KafkaProperties`, `RedisProperties`). Properties follow the naming pattern:
+All properties use the `common.*` prefix pattern:
 
 ```yaml
 common:
-  kafka:            # Kafka features
-  redis:            # Cache configuration
-  resilience:       # Resilience4j settings
-  security:         # JWT/encryption settings
+  redis:
+    enabled: true
+    cache-default-ttl: 30m
+    cache-ttl-mappings: {}
+    use-cache-prefix: true
+    key-prefix: ""
+    cache-null-values: true
+    enable-caffeine: true
+    caffeine-spec: "maximumSize=1000,expireAfterWrite=5m"
+
+  kafka:
+    dlq:
+      enabled: true
+      retry-attempts: 3
+    outbox:
+      enabled: false
+
+  resilience:
+    circuit-breaker:
+      enabled: true
+      failure-rate-threshold: 50
+      sliding-window-size: 10
+      minimum-number-of-calls: 5
+      wait-duration-in-open-state: 10s
+      permitted-number-of-calls-in-half-open-state: 3
+      instance-configs: {}
+    retry:
+      enabled: true
+      max-attempts: 3
+      wait-duration: 1s
+      enable-exponential-backoff: false
+      exponential-backoff-multiplier: 2.0
+    time-limiter:
+      enabled: false
+      timeout-duration: 5s
+    rate-limiter:
+      enabled: false
+      limit-for-period: 10
+      limit-refresh-period: 1s
+      timeout-duration: 5s
+
+  security:
+    jasypt:
+      enabled: false
+      password: ${JASYPT_PASSWORD}
+      algorithm: PBEWITHHMACSHA512ANDAES_256
+      key-obtention-iterations: 1000
+      pool-size: 1
+    jwt:
+      enabled: false
+      secret: ${JWT_SECRET}
+      expiration: 1h
+      refresh-expiration: 7d
+      issuer: nexora-auth
+      audience: nexora-api
 ```
 
-### Component Scanning
+## Key Architectural Patterns
 
-Auto-configurations use `@ComponentScan` with `basePackageClasses` to discover components:
+### Web Starter
+
+- `@ConditionalOnWebApplication` - only activates in web apps
+- `@EnableAspectJAutoProxy` - enables AOP for response wrapping
+- `ResponseWrapperAspect` - wraps all `@RestController` responses in `Result<T>`
+- `GlobalExceptionHandler` - `@RestControllerAdvice` for unified error handling
+
+Exception mappings:
+- `BusinessException` → 400
+- `MethodArgumentNotValidException` → 400
+- `ConstraintViolationException` → 400
+- `IllegalArgumentException` → 400
+- `IllegalStateException` → 400
+- `EntityNotFoundException` → 404
+- `Exception` → 500
+
+### Redis Starter
+
+- **Multi-level caching**: Caffeine L1 (local) + Redis L2 (distributed)
+- **JSON serialization** with Jackson `JavaTimeModule`
+- **Per-cache TTL** via `cache-ttl-mappings`
+- **Transaction-aware** cache manager
+- **Key prefix** support for multi-environment isolation
+
+Auto-configurations:
+- `RedisCacheAutoConfiguration` - activates when `RedisConnectionFactory` present, `common.redis.enabled=true`
+- `CaffeineAutoConfiguration` - activates when `Caffeine` present, `common.redis.enable-caffeine=true`
+
+### Kafka Starter
+
+- **Transactional publishing** via `EventPublisher`
+- **DLQ** with fixed backoff (1s, 3 attempts)
+- **Outbox pattern** for reliable event publishing (requires JPA)
+
+Auto-configurations:
+- `KafkaAutoConfiguration` - `@EnableKafka`, component scan for `EventPublisher`
+- `KafkaDlqAutoConfiguration` - DLQ error handler when `common.kafka.dlq.enabled=true`
+
+Non-retryable exceptions: `IllegalArgumentException`, `DeserializationException`
+
+DLQ topic naming: `{original-topic}.dlq`
+
+### Resilience Starter
+
+- **CircuitBreaker** - prevents cascading failures
+- **Retry** - with exponential backoff support
+- **TimeLimiter** - timeout protection
+- **RateLimiter** - rate limiting (disabled by default)
+
+Auto-configurations:
+- `ResilienceAutoConfiguration` - creates registry beans
+- `EventListenerAutoConfiguration` - registers event listeners via `@PostConstruct` to avoid circular dependencies
+
+Event listeners: `CircuitBreakerEventLogger`, `RetryEventLogger`
+
+### Security Starter
+
+- **JWT** - generation, validation, refresh token support
+- **Jasypt** - property encryption with `ENC()` wrapper
+
+Auto-configurations:
+- `SecurityAutoConfiguration` - nested `JwtTokenProviderConfiguration`, `EncryptorConfiguration`
+- `JasyptAutoConfiguration` - `StandardPBEStringEncryptor` when `common.security.jasypt.enabled=true`
+
+## Component Scanning
+
+Auto-configurations use `@ComponentScan` with `basePackageClasses`:
 - Kafka: `EventPublisher` in `com.nexora.kafka.publisher`
-- Outbox: `OutboxEvent` entity scanned via `@EntityScan`
-
-### Event Listeners
-
-Resilience4j event listeners (`CircuitBreakerEventLogger`, `RetryEventLogger`) are registered in a separate `EventListenerAutoConfiguration` to avoid circular dependencies.
+- Outbox: `OutboxEvent` entity scanned via `@EntityScan` when JPA available
 
 ## Adding a New Starter
 
@@ -80,3 +202,12 @@ Resilience4j event listeners (`CircuitBreakerEventLogger`, `RetryEventLogger`) a
 3. Create auto-configuration class in `.../autoconfigure/` package
 4. Create `@ConfigurationProperties` class if needed
 5. Register in `META-INF/spring/org.springframework.boot.autoconfigure.AutoConfiguration.imports`
+
+## Common Patterns
+
+- All use `lombok` for reducing boilerplate (`compileOnly` + `annotationProcessor`)
+- All use `spring-boot-configuration-processor` for metadata generation
+- All use `jackson-databind` for JSON serialization
+- All use `slf4j` for logging
+- All have comprehensive JavaDoc with usage examples
+- All conditional on class presence and property enable/disable
