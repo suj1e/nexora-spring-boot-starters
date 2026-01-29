@@ -1,0 +1,33 @@
+{
+  "groups": [
+    {
+      "name": "snowflake",
+      "type": "java.lang.Object",
+      "sourceType": "com.nexora.id.SnowflakeProperties"
+    }
+  ],
+  "properties": [
+    {
+      "name": "snowflake.worker-id",
+      "type": "java.lang.Integer",
+      "defaultValue": 0,
+      "description": "Worker ID (0-31), unique per instance.",
+      "sourceType": "com.nexora.id.SnowflakeProperties"
+    },
+    {
+      "name": "snowflake.datacenter-id",
+      "type": "java.lang.Integer",
+      "defaultValue": 0,
+      "description": "Datacenter ID (0-31), unique per datacenter.",
+      "sourceType": "com.nexora.id.SnowflakeProperties"
+    },
+    {
+      "name": "snowflake.epoch",
+      "type": "java.lang.Long",
+      "defaultValue": 1704067200000,
+      "description": "Epoch timestamp in milliseconds since Unix epoch (default: 2024-01-01 00:00:00 UTC).",
+      "sourceType": "com.nexora.id.SnowflakeProperties"
+    }
+  ],
+  "hints": []
+}
