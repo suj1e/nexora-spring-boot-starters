@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="CacheHelper Tests" tests="12" skipped="0" failures="0" errors="0" timestamp="2026-01-29T23:45:11.097Z" hostname="192.168.31.66" time="0.552">
+  <properties/>
+  <testcase name="evict should do nothing when cache is null" classname="com.nexora.redis.cache.CacheHelperTest" time="0.512"/>
+  <testcase name="getOptional should return empty for null cached value" classname="com.nexora.redis.cache.CacheHelperTest" time="0.002"/>
+  <testcase name="getOrCompute should compute and cache value when not present" classname="com.nexora.redis.cache.CacheHelperTest" time="0.004"/>
+  <testcase name="clear should clear all entries in cache" classname="com.nexora.redis.cache.CacheHelperTest" time="0.002"/>
+  <testcase name="evict should evict entry from cache" classname="com.nexora.redis.cache.CacheHelperTest" time="0.001"/>
+  <testcase name="clear should do nothing when cache is null" classname="com.nexora.redis.cache.CacheHelperTest" time="0.002"/>
+  <testcase name="getOrCompute should invoke supplier only once when caching" classname="com.nexora.redis.cache.CacheHelperTest" time="0.018"/>
+  <testcase name="getOptional should return empty when value not in cache" classname="com.nexora.redis.cache.CacheHelperTest" time="0.002"/>
+  <testcase name="getOptional should return value when present in cache" classname="com.nexora.redis.cache.CacheHelperTest" time="0.001"/>
+  <testcase name="getOrCompute should compute value when cache is null" classname="com.nexora.redis.cache.CacheHelperTest" time="0.001"/>
+  <testcase name="getOptional should return empty when cache is null" classname="com.nexora.redis.cache.CacheHelperTest" time="0.001"/>
+  <testcase name="getOrCompute should return cached value when present" classname="com.nexora.redis.cache.CacheHelperTest" time="0.002"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[Mockito is currently self-attaching to enable the inline-mock-maker. This will no longer work in future releases of the JDK. Please add Mockito as an agent to your build as described in Mockito's documentation: https://javadoc.io/doc/org.mockito/mockito-core/latest/org.mockito/org/mockito/Mockito.html#0.3
+WARNING: A Java agent has been loaded dynamically (/Users/sujie/.m2/repository/net/bytebuddy/byte-buddy-agent/1.17.8/byte-buddy-agent-1.17.8.jar)
+WARNING: If a serviceability tool is in use, please run with -XX:+EnableDynamicAgentLoading to hide this warning
+WARNING: If a serviceability tool is not in use, please run with -Djdk.instrument.traceUsage for more information
+WARNING: Dynamic loading of agents will be disallowed by default in a future release
+]]></system-err>
+</testsuite>

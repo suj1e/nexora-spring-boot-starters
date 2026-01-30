@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="Result Tests" tests="8" skipped="0" failures="0" errors="0" timestamp="2026-01-29T23:49:12.313Z" hostname="192.168.31.66" time="0.018">
+  <properties/>
+  <testcase name="Success result without data should have null data field" classname="com.nexora.web.model.ResultTest" time="0.01"/>
+  <testcase name="Error result should have error code and message" classname="com.nexora.web.model.ResultTest" time="0.003"/>
+  <testcase name="No content result should have 204 status" classname="com.nexora.web.model.ResultTest" time="0.001"/>
+  <testcase name="Success result should contain data and correct status code" classname="com.nexora.web.model.ResultTest" time="0.0"/>
+  <testcase name="Created result should have 201 status" classname="com.nexora.web.model.ResultTest" time="0.001"/>
+  <testcase name="Error result with custom code and data" classname="com.nexora.web.model.ResultTest" time="0.0"/>
+  <testcase name="Record should be immutable with valid components" classname="com.nexora.web.model.ResultTest" time="0.0"/>
+  <testcase name="Multiple success results should have independent timestamps" classname="com.nexora.web.model.ResultTest" time="0.001"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="OutboxStatus Tests" tests="7" skipped="0" failures="0" errors="0" timestamp="2026-01-29T23:45:09.517Z" hostname="192.168.31.66" time="0.004">
+  <properties/>
+  <testcase name="Enum should contain NEW, SENT, and FAILED" classname="com.nexora.kafka.outbox.OutboxStatusTest" time="0.001"/>
+  <testcase name="FAILED status should represent failed events" classname="com.nexora.kafka.outbox.OutboxStatusTest" time="0.0"/>
+  <testcase name="valueOf should throw exception for invalid status name" classname="com.nexora.kafka.outbox.OutboxStatusTest" time="0.001"/>
+  <testcase name="NEW status should represent unprocessed events" classname="com.nexora.kafka.outbox.OutboxStatusTest" time="0.0"/>
+  <testcase name="Enum should have exactly three values" classname="com.nexora.kafka.outbox.OutboxStatusTest" time="0.0"/>
+  <testcase name="Statuses should be comparable" classname="com.nexora.kafka.outbox.OutboxStatusTest" time="0.001"/>
+  <testcase name="SENT status should represent successfully published events" classname="com.nexora.kafka.outbox.OutboxStatusTest" time="0.0"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

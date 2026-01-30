@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="FileMetadata Tests" tests="11" skipped="0" failures="0" errors="0" timestamp="2026-01-29T23:45:07.907Z" hostname="192.168.31.66" time="0.023">
+  <properties/>
+  <testcase name="IsVideo should return true for video extensions" classname="com.nexora.storage.FileMetadataTest" time="0.01"/>
+  <testcase name="All fields should be settable and gettable" classname="com.nexora.storage.FileMetadataTest" time="0.006"/>
+  <testcase name="GetFormattedSize should return Unknown for null size" classname="com.nexora.storage.FileMetadataTest" time="0.0"/>
+  <testcase name="GetFormattedSize should format bytes correctly" classname="com.nexora.storage.FileMetadataTest" time="0.001"/>
+  <testcase name="IsDocument should return true for document extensions" classname="com.nexora.storage.FileMetadataTest" time="0.0"/>
+  <testcase name="IsImage should return true for image extensions" classname="com.nexora.storage.FileMetadataTest" time="0.001"/>
+  <testcase name="IsImage should be case-insensitive" classname="com.nexora.storage.FileMetadataTest" time="0.0"/>
+  <testcase name="IsImage should return false for non-image extensions" classname="com.nexora.storage.FileMetadataTest" time="0.001"/>
+  <testcase name="IsVideo should return false for non-video extensions" classname="com.nexora.storage.FileMetadataTest" time="0.001"/>
+  <testcase name="GetFormattedSize should handle decimal precision" classname="com.nexora.storage.FileMetadataTest" time="0.0"/>
+  <testcase name="IsDocument should return false for non-document extensions" classname="com.nexora.storage.FileMetadataTest" time="0.0"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

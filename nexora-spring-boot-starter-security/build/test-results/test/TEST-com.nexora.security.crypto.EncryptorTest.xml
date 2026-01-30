@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="Encryptor Tests" tests="11" skipped="0" failures="0" errors="0" timestamp="2026-01-29T23:47:08.864Z" hostname="192.168.31.66" time="0.567">
+  <properties/>
+  <testcase name="DecryptFromHex should throw exception for invalid hex" classname="com.nexora.security.crypto.EncryptorTest" time="0.489"/>
+  <testcase name="Encrypt should delegate to underlying encryptor" classname="com.nexora.security.crypto.EncryptorTest" time="0.017"/>
+  <testcase name="Decrypt should throw exception for invalid input" classname="com.nexora.security.crypto.EncryptorTest" time="0.029"/>
+  <testcase name="EncryptToHex should produce hex-encoded output" classname="com.nexora.security.crypto.EncryptorTest" time="0.003"/>
+  <testcase name="EncryptToHex should produce consistent output for same input" classname="com.nexora.security.crypto.EncryptorTest" time="0.011"/>
+  <testcase name="DecryptFromHex should decode hex before decrypting" classname="com.nexora.security.crypto.EncryptorTest" time="0.001"/>
+  <testcase name="Encrypt and decrypt should be reversible" classname="com.nexora.security.crypto.EncryptorTest" time="0.004"/>
+  <testcase name="Decrypt should delegate to underlying encryptor" classname="com.nexora.security.crypto.EncryptorTest" time="0.001"/>
+  <testcase name="Encrypt should handle empty string" classname="com.nexora.security.crypto.EncryptorTest" time="0.002"/>
+  <testcase name="Encrypt should handle special characters" classname="com.nexora.security.crypto.EncryptorTest" time="0.002"/>
+  <testcase name="EncryptToHex and decryptFromHex should be reversible" classname="com.nexora.security.crypto.EncryptorTest" time="0.003"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[Mockito is currently self-attaching to enable the inline-mock-maker. This will no longer work in future releases of the JDK. Please add Mockito as an agent to your build as described in Mockito's documentation: https://javadoc.io/doc/org.mockito/mockito-core/latest/org.mockito/org/mockito/Mockito.html#0.3
+WARNING: A Java agent has been loaded dynamically (/Users/sujie/.m2/repository/net/bytebuddy/byte-buddy-agent/1.17.8/byte-buddy-agent-1.17.8.jar)
+WARNING: If a serviceability tool is in use, please run with -XX:+EnableDynamicAgentLoading to hide this warning
+WARNING: If a serviceability tool is not in use, please run with -Djdk.instrument.traceUsage for more information
+WARNING: Dynamic loading of agents will be disallowed by default in a future release
+]]></system-err>
+</testsuite>

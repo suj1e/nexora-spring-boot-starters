@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="BusinessException Tests" tests="5" skipped="0" failures="0" errors="0" timestamp="2026-01-29T23:49:12.332Z" hostname="192.168.31.66" time="0.002">
+  <properties/>
+  <testcase name="Default business exception should have code 400" classname="com.nexora.web.exception.BusinessExceptionTest" time="0.0"/>
+  <testcase name="Business exception should be runtime exception" classname="com.nexora.web.exception.BusinessExceptionTest" time="0.001"/>
+  <testcase name="Business exception with cause should preserve message" classname="com.nexora.web.exception.BusinessExceptionTest" time="0.0"/>
+  <testcase name="Business exception with cause should wrap original exception" classname="com.nexora.web.exception.BusinessExceptionTest" time="0.0"/>
+  <testcase name="Business exception with custom code should preserve code" classname="com.nexora.web.exception.BusinessExceptionTest" time="0.0"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

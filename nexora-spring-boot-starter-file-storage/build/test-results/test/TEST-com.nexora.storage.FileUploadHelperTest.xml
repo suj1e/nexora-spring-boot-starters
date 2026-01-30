@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="FileUploadHelper Tests" tests="19" skipped="0" failures="0" errors="0" timestamp="2026-01-29T23:45:07.936Z" hostname="192.168.31.66" time="0.534">
+  <properties/>
+  <testcase name="GetExtension should handle edge cases" classname="com.nexora.storage.FileUploadHelperTest" time="0.498"/>
+  <testcase name="ValidateFile should check file extension" classname="com.nexora.storage.FileUploadHelperTest" time="0.01"/>
+  <testcase name="ValidateFile should return error for empty file" classname="com.nexora.storage.FileUploadHelperTest" time="0.002"/>
+  <testcase name="GenerateSafeFilename should replace special characters" classname="com.nexora.storage.FileUploadHelperTest" time="0.002"/>
+  <testcase name="ValidateFile should pass for valid file" classname="com.nexora.storage.FileUploadHelperTest" time="0.002"/>
+  <testcase name="IsDocument should return true for document files" classname="com.nexora.storage.FileUploadHelperTest" time="0.001"/>
+  <testcase name="ValidateFile should pass when no size limit set" classname="com.nexora.storage.FileUploadHelperTest" time="0.001"/>
+  <testcase name="FormatSize should format bytes correctly" classname="com.nexora.storage.FileUploadHelperTest" time="0.002"/>
+  <testcase name="ValidationError should store code and message" classname="com.nexora.storage.FileUploadHelperTest" time="0.001"/>
+  <testcase name="GenerateSafeFilename should handle edge cases" classname="com.nexora.storage.FileUploadHelperTest" time="0.001"/>
+  <testcase name="IsImage should return false for non-image files" classname="com.nexora.storage.FileUploadHelperTest" time="0.0"/>
+  <testcase name="IsVideo should return false for non-video files" classname="com.nexora.storage.FileUploadHelperTest" time="0.001"/>
+  <testcase name="ValidateFile should return error for null file" classname="com.nexora.storage.FileUploadHelperTest" time="0.001"/>
+  <testcase name="GetExtension should extract extension correctly" classname="com.nexora.storage.FileUploadHelperTest" time="0.001"/>
+  <testcase name="IsImage should be case-insensitive" classname="com.nexora.storage.FileUploadHelperTest" time="0.001"/>
+  <testcase name="ValidateFile should check file size" classname="com.nexora.storage.FileUploadHelperTest" time="0.002"/>
+  <testcase name="IsImage should return true for image files" classname="com.nexora.storage.FileUploadHelperTest" time="0.001"/>
+  <testcase name="IsVideo should return true for video files" classname="com.nexora.storage.FileUploadHelperTest" time="0.001"/>
+  <testcase name="IsDocument should return false for non-document files" classname="com.nexora.storage.FileUploadHelperTest" time="0.001"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[Mockito is currently self-attaching to enable the inline-mock-maker. This will no longer work in future releases of the JDK. Please add Mockito as an agent to your build as described in Mockito's documentation: https://javadoc.io/doc/org.mockito/mockito-core/latest/org.mockito/org/mockito/Mockito.html#0.3
+WARNING: A Java agent has been loaded dynamically (/Users/sujie/.m2/repository/net/bytebuddy/byte-buddy-agent/1.17.8/byte-buddy-agent-1.17.8.jar)
+WARNING: If a serviceability tool is in use, please run with -XX:+EnableDynamicAgentLoading to hide this warning
+WARNING: If a serviceability tool is not in use, please run with -Djdk.instrument.traceUsage for more information
+WARNING: Dynamic loading of agents will be disallowed by default in a future release
+]]></system-err>
+</testsuite>

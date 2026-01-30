@@ -8,6 +8,10 @@ repositories {
     mavenCentral()
 }
 
+tasks.withType<Test> {
+    useJUnitPlatform()
+}
+
 dependencies {
     implementation(enforcedPlatform(libs.spring.boot.dependencies))
     compileOnly(libs.lombok)
@@ -21,5 +25,7 @@ dependencies {
     compileOnly(libs.jakarta.servlet.api)
     runtimeOnly(libs.jjwt.impl)
     runtimeOnly(libs.jjwt.jackson)
+
     testImplementation(libs.spring.boot.starter.test)
+    testRuntimeOnly("org.junit.platform:junit-platform-launcher")
 }

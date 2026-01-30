@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="ResilienceProperties Tests" tests="10" skipped="0" failures="0" errors="0" timestamp="2026-01-29T23:46:24.986Z" hostname="192.168.31.66" time="0.021">
+  <properties/>
+  <testcase name="Should be able to customize circuit breaker properties" classname="com.nexora.resilience.autoconfigure.ResiliencePropertiesTest" time="0.012"/>
+  <testcase name="Should be able to customize retry properties" classname="com.nexora.resilience.autoconfigure.ResiliencePropertiesTest" time="0.002"/>
+  <testcase name="Should be able to customize rate limiter properties" classname="com.nexora.resilience.autoconfigure.ResiliencePropertiesTest" time="0.001"/>
+  <testcase name="Default retry properties should have expected values" classname="com.nexora.resilience.autoconfigure.ResiliencePropertiesTest" time="0.001"/>
+  <testcase name="Default time limiter properties should have expected values" classname="com.nexora.resilience.autoconfigure.ResiliencePropertiesTest" time="0.001"/>
+  <testcase name="Instance configs should initialize as empty map" classname="com.nexora.resilience.autoconfigure.ResiliencePropertiesTest" time="0.0"/>
+  <testcase name="Circuit breaker instance configs should be mutable" classname="com.nexora.resilience.autoconfigure.ResiliencePropertiesTest" time="0.0"/>
+  <testcase name="Default circuit breaker properties should have expected values" classname="com.nexora.resilience.autoconfigure.ResiliencePropertiesTest" time="0.001"/>
+  <testcase name="Should be able to customize time limiter properties" classname="com.nexora.resilience.autoconfigure.ResiliencePropertiesTest" time="0.0"/>
+  <testcase name="Default rate limiter properties should have expected values" classname="com.nexora.resilience.autoconfigure.ResiliencePropertiesTest" time="0.0"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

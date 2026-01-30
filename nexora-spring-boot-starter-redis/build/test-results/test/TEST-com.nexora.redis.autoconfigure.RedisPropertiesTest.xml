@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="RedisProperties Tests" tests="4" skipped="0" failures="0" errors="0" timestamp="2026-01-29T23:45:11.076Z" hostname="192.168.31.66" time="0.015">
+  <properties/>
+  <testcase name="Should be able to set all properties" classname="com.nexora.redis.autoconfigure.RedisPropertiesTest" time="0.01"/>
+  <testcase name="Cache TTL mappings should initialize as empty map" classname="com.nexora.redis.autoconfigure.RedisPropertiesTest" time="0.002"/>
+  <testcase name="Default properties should have expected default values" classname="com.nexora.redis.autoconfigure.RedisPropertiesTest" time="0.0"/>
+  <testcase name="Cache TTL mappings should be mutable" classname="com.nexora.redis.autoconfigure.RedisPropertiesTest" time="0.0"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

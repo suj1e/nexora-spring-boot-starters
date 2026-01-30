@@ -20,19 +20,17 @@ import org.springframework.stereotype.Component;
 public class RetryEventLogger implements io.github.resilience4j.core.EventConsumer<RetryEvent> {
 
     @Override
-    public void acceptEvent(RetryEvent event) {
+    public void consumeEvent(RetryEvent event) {
         String retryName = event.getName();
 
-        if (event.getEventType().startsWith("RETRY")) {
-            log.info("Retry Event: name={}, type={}", retryName, event.getEventType());
+        log.info("Retry Event: name={}, type={}", retryName, event.getEventType());
 
-            // Log retry attempts with error
-            if (event instanceof RetryOnErrorEvent errorEvent) {
-                log.warn("Retry Attempt: name={}, attempt={}, error={}",
-                        retryName,
-                        errorEvent.getNumberOfRetryAttempts(),
-                        errorEvent.getLastThrowable().getMessage());
-            }
+        // Log retry attempts with error
+        if (event instanceof RetryOnErrorEvent errorEvent) {
+            log.warn("Retry Attempt: name={}, attempt={}, error={}",
+                    retryName,
+                    errorEvent.getNumberOfRetryAttempts(),
+                    errorEvent.getLastThrowable().getMessage());
         }
     }
 }

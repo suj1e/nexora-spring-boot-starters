@@ -84,7 +84,7 @@ public class GlobalExceptionHandler {
     /**
      * Handle resource not found exceptions.
      */
-    @ExceptionHandler({jakarta.persistence.EntityNotFoundException.class, org.springframework.data.domain.EntityNotFoundException.class})
+    @ExceptionHandler({jakarta.persistence.EntityNotFoundException.class})
     @ResponseStatus(HttpStatus.NOT_FOUND)
     public Result<Void> handleEntityNotFoundException(RuntimeException ex, HttpServletRequest request) {
         log.warn("Entity not found: {} - {}", request.getRequestURI(), ex.getMessage());

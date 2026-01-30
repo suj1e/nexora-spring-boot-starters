@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="SmsAuthenticationToken Tests" tests="11" skipped="0" failures="0" errors="0" timestamp="2026-01-29T23:47:08.838Z" hostname="192.168.31.66" time="0.02">
+  <properties/>
+  <testcase name="GetSmsCode should return null when credentials is null" classname="com.nexora.security.sms.SmsAuthenticationTokenTest" time="0.009"/>
+  <testcase name="GetPhone should return null when principal is null" classname="com.nexora.security.sms.SmsAuthenticationTokenTest" time="0.002"/>
+  <testcase name="Authenticated token should hold principal and authorities" classname="com.nexora.security.sms.SmsAuthenticationTokenTest" time="0.002"/>
+  <testcase name="Empty authorities collection should be valid" classname="com.nexora.security.sms.SmsAuthenticationTokenTest" time="0.001"/>
+  <testcase name="Token should extend UsernamePasswordAuthenticationToken" classname="com.nexora.security.sms.SmsAuthenticationTokenTest" time="0.001"/>
+  <testcase name="GetSmsCode should convert credentials to string" classname="com.nexora.security.sms.SmsAuthenticationTokenTest" time="0.0"/>
+  <testcase name="GetPhone should convert principal to string" classname="com.nexora.security.sms.SmsAuthenticationTokenTest" time="0.0"/>
+  <testcase name="Two authenticated tokens with same data should be equal" classname="com.nexora.security.sms.SmsAuthenticationTokenTest" time="0.0"/>
+  <testcase name="Two unauthenticated tokens with same data should be equal" classname="com.nexora.security.sms.SmsAuthenticationTokenTest" time="0.0"/>
+  <testcase name="Unauthenticated token should hold phone and SMS code" classname="com.nexora.security.sms.SmsAuthenticationTokenTest" time="0.0"/>
+  <testcase name="Authenticated token should contain correct authorities" classname="com.nexora.security.sms.SmsAuthenticationTokenTest" time="0.0"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

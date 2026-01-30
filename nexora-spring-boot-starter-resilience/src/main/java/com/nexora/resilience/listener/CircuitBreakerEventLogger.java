@@ -22,27 +22,24 @@ import org.springframework.stereotype.Component;
 public class CircuitBreakerEventLogger implements EventConsumer<CircuitBreakerEvent> {
 
     @Override
-    public void acceptEvent(CircuitBreakerEvent event) {
+    public void consumeEvent(CircuitBreakerEvent event) {
         String circuitBreakerName = event.getCircuitBreakerName();
 
-        if (event.getEventType().startsWith("CIRCUIT_BREAKER")) {
-            log.info("Circuit Breaker Event: name={}, type={}", circuitBreakerName, event.getEventType());
+        log.info("Circuit Breaker Event: name={}, type={}", circuitBreakerName, event.getEventType());
 
-            // Log state transitions
-            if (event instanceof CircuitBreakerOnStateTransitionEvent transitionEvent) {
-                log.warn("Circuit Breaker State Transition: name={}, from={}, to={}",
-                        circuitBreakerName,
-                        transitionEvent.getStateTransition().fromState(),
-                        transitionEvent.getStateTransition().toState());
-            }
+        // Log state transitions
+        if (event instanceof CircuitBreakerOnStateTransitionEvent transitionEvent) {
+            log.warn("Circuit Breaker State Transition: name={}, from={}, to={}",
+                    circuitBreakerName,
+                    transitionEvent.getStateTransition(),
+                    transitionEvent.getStateTransition().toString());
+        }
 
-            // Log failure rate exceeded
-            if (event instanceof CircuitBreakerOnFailureRateExceededEvent failureRateEvent) {
-                log.error("Circuit Breaker Failure Rate Exceeded: name={}, failureRate={}%, threshold={}%",
-                        circuitBreakerName,
-                        failureRateEvent.getFailureRate(),
-                        failureRateEvent.getThreshold());
-            }
+        // Log failure rate exceeded
+        if (event instanceof CircuitBreakerOnFailureRateExceededEvent failureRateEvent) {
+            log.error("Circuit Breaker Failure Rate Exceeded: name={}, failureRate={}%",
+                    circuitBreakerName,
+                    failureRateEvent.getFailureRate());
         }
     }
 }

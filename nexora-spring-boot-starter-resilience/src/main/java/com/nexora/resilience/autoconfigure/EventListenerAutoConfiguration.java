@@ -47,11 +47,11 @@ public class EventListenerAutoConfiguration {
     public void registerEventListeners() {
         // Register circuit breaker event listener
         circuitBreakerRegistry.getAllCircuitBreakers()
-                .forEach(cb -> cb.getEventPublisher().registerEventConsumer(circuitBreakerEventLogger));
+                .forEach(cb -> cb.getEventPublisher().onEvent(circuitBreakerEventLogger));
 
         // Register retry event listener
         retryRegistry.getAllRetries()
-                .forEach(retry -> retry.getEventPublisher().registerEventConsumer(retryEventLogger));
+                .forEach(retry -> retry.getEventPublisher().onEvent(retryEventLogger));
 
         log.info("Registered Resilience4j event listeners");
     }

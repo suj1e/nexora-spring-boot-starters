@@ -19,7 +19,6 @@ spring-boot-dependencies = { module = "org.springframework.boot:spring-boot-depe
 
 # Spring Boot starters
 spring-boot-starter = { module = "org.springframework.boot:spring-boot-starter" }
-spring-boot-starter-aop = { module = "org.springframework.boot:spring-boot-starter-aop" }
 spring-boot-starter-cache = { module = "org.springframework.boot:spring-boot-starter-cache" }
 spring-boot-starter-data-jpa = { module = "org.springframework.boot:spring-boot-starter-data-jpa" }
 spring-boot-starter-data-redis = { module = "org.springframework.boot:spring-boot-starter-data-redis" }
