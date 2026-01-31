@@ -8,7 +8,7 @@ jasypt = "3.0.5"
 jjwt = "0.12.3"
 lettuce = "6.3.2.RELEASE"
 resilience4j = "2.2.0"
-lombok = "1.18.34"
+lombok = "1.18.42"
 
 # Plugins
 dependency-management = "1.1.7"
