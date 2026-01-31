@@ -3,7 +3,7 @@
 spring-boot = "4.0.2"
 
 # Third-party libraries
-caffeine = "3.1.8"
+caffeine = "3.2.3"
 jasypt = "3.0.5"
 jjwt = "0.12.3"
 lettuce = "6.3.2.RELEASE"
